@@ -1,0 +1,52 @@
+{% extends "custom_auth/base.html" %}
+{% block content %}
+
+
+
+<br>
+<br>
+<div class="jumbotron jumbotron-fluid " >
+<div class="container">
+    <h1 style = "position:relative; left:50px; top:20px; color:rgb(0, 128, 255);"> {{ employee.name }}'s Profile</h1>
+
+</div>
+</div>
+
+<div class="container">
+    <ul class="list-group list-group-flush">
+
+    <li class="list-group-item"> <b style="color:rgb(0, 128, 255);">ID: </b> {{employee.req_id}}</li>
+    <li class="list-group-item"> <b style="color:rgb(0, 128, 255);">HR ID: </b> {{employee.hr_id}}</li>
+
+    <li class="list-group-item"> <b style="color:rgb(0, 128, 255);">RESUME: </b> {{employee.resume}}</li>
+
+    <li class="list-group-item"> <b style="color:rgb(0, 128, 255);">Mobile: </b> {{employee.mobile_no}}</li>
+
+
+
+    <li class="list-group-item"> <b style="color:rgb(0, 128, 255);">Skills </b>
+        <ol>
+            {% for s in employee.skills %}
+
+            <li> {{s}}</li>
+
+            {% endfor %}
+
+
+        </ol>
+        </li>
+
+
+
+    </ul>
+<br>
+
+    <a href="{% url 'employee:view_pdf' pk=employee.pk  %}" class="btn btn-outline-info col-md-3" type="submit">View Resume</a>
+    </div>
+
+
+
+
+
+
+{% endblock content %}

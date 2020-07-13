@@ -1,0 +1,89 @@
+{% extends "custom_auth/base.html" %}
+{% block content %}
+
+
+{%  if user.is_authenticated  %}
+<br>
+<br>
+<div class="jumbotron jumbotron-fluid bg-dark text-white" >
+<div class="container">
+
+    <h1 style = "position:relative; text-align: left; left:80px; top:20px;">Welcome {{ user.name }}!! </h1>
+    <br>
+
+    <button class="btn btn-outline-info" style = "position:relative; left:80px; top:2px; type="submit"><a href="{% url 'custom_auth:logout' %}">Logout</a></button>
+
+    <button class="btn btn-outline-info" style = "position:relative; left:80px; top:2px; type="submit"><a href="{% url 'custom_auth:add_employee' %}">Add Candidate</a></button>
+
+    <button class="btn btn-outline-info" style = "position:relative; left:80px; top:2px; type="submit"><a href="{% url 'custom_auth:filter_employees' %}">Filter Candidates</a></button>
+
+</div>
+</div>
+{% if employees %}
+<div class="jumbotron-fluid">
+
+   <h1 style = "position:relative; left:80px; top:20px;">Employees registered by you </h1>
+   <br>
+   <hr>
+   <br>
+   <br>
+<div class="container">
+    <div class="row">
+        {% for emp in employees %}
+
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <p style = "color:rgb(0,0,255);">{{ emp.date_posted|date:"F d, Y" }}</p>
+    <h5 class="card-title"><b style="color:rgb(0, 128, 255);">Candidate ID: </b>{{ emp.req_id }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ emp.name }}</h6>
+   <h6 class="card-subtitle mb-2 text-muted">{{ emp.mobile_no }}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">{{ emp.email }}</h6>
+
+    <p class="card-text">
+        <h6 class="card-subtitle mb-2 text-muted">
+            <p style="color:rgb(0, 128, 255);">Specialized In:</p><br>
+            <ul class="list-group">
+            {% for s in emp.skills %}
+            <li class="list-group-item">{{ s }}</li>
+
+            {% endfor %}
+        </ul>
+
+
+
+        </h6></p>
+
+    <a href="{% url 'employee:profile' pk=emp.pk %}" class="card-link"> View Profile</a>
+    <a href="{% url 'employee:edit_employee' pk=emp.pk %}" class="card-link">Edit Profile</a>
+    <a href="{% url 'employee:delete_employee' pk=emp.pk %}" class="card-link"><i class="fa fa-trash-o" style="font-size:24px;color:red;"></i></a>
+  </div>
+</div>
+<br>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+</div>
+{% else %}
+<h1 style = "position:relative; left:80px; top:20px;">Register Potential Candidates </h1>
+{% endif %}
+
+
+
+
+{% else %}
+<div class="jumbotron jumbotron-fluid">
+<div class="container" position="absolute">
+   <h1>You Are Not logged in. Access Denied</h1>
+<button class="btn btn-outline-info" type="submit"><a href="{% url 'custom_auth:login' %}">Login</a></button>
+
+
+</div>
+</div>
+
+{%endif%}
+{% endblock content %}

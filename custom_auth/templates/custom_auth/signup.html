@@ -1,0 +1,51 @@
+{% extends "custom_auth/base2.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">HR Portal</h1>
+    <p class="lead">You can edit or add potential candidates over here!</p>
+  </div>
+</div>
+
+<div class="jumbotron vertical-center">
+  <div class="content-section">
+    <form class="" action="" method="post">
+      {% csrf_token %}
+
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          {{ form.id|as_crispy_field }}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          {{ form.name|as_crispy_field }}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          {{ form.email|as_crispy_field }}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          {{ form.password|as_crispy_field }}
+        </div>
+      </div>
+
+      <br>
+      <input type="submit" class="btn btn-outline-info" name="signup" value="Signup">
+
+    </form>
+</div>
+<br>
+Alreadyhave an account?
+            <a href="/custom_auth/login" target="blank"><strong>Login here</strong></a>!
+</div>
+  {% endblock content %}

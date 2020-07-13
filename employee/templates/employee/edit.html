@@ -1,0 +1,184 @@
+{% extends "custom_auth/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<br>
+<div class="jumbotron jumbotron-fluid bg-dark text-white">
+  <div class="container">
+    <h1 class="display-4">HR Portal</h1>
+    <p class="lead">Add potential candidate details</p>
+  </div>
+</div>
+
+<div class="jumbotron vertical-center">
+  <div class="content-section">
+    <form  enctype="multipart/form-data" class="" action="" method="post">
+      {% csrf_token %}
+
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+
+        {{ form.hr_id|as_crispy_field }}
+      </div>
+
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        {{ form.date_posted|as_crispy_field }}
+      </div>
+
+    </div>
+
+
+    <p>Resume*</p>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        {{ form.resume|as_crispy_field }}
+      </div>
+
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        {{ form.name|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-4">
+        {{ form.mobile_no|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-4">
+        {{ form.email|as_crispy_field }}
+      </div>
+
+    </div>
+
+
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        {{ form.cctc|as_crispy_field }}
+      </div>
+
+      <div class="form-group col-md-3">
+        {{ form.ectc|as_crispy_field }}
+      </div>
+
+      <div class="form-group col-md-3">
+        {{ form.total_exp|as_crispy_field }}
+      </div>
+
+      <div class="form-group col-md-3">
+        {{ form.rel_exp|as_crispy_field }}
+      </div>
+
+    </div>
+
+
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        {{ form.skills|as_crispy_field }}
+      </div>
+
+      <div class="form-group col-md-6">
+        {{ form.notice_period|as_crispy_field }}
+      </div>
+
+    </div>
+
+     <div class="form-row">
+      <div class="form-group col-md-6">
+        {{ form.current_location|as_crispy_field }}
+      </div>
+
+
+      <div class="form-group col-md-6">
+        {{ form.current_company|as_crispy_field }}
+      </div>
+
+    </div>
+
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        {{ form.mode_of_interview|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-6">
+        {{ form.interview_status|as_crispy_field }}
+      </div>
+
+    </div>
+
+<div class="form-row">
+      <div class="form-group col-md-6">
+        {{ form.round1_schedule|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-6">
+        {{ form.round2_schedule|as_crispy_field }}
+      </div>
+
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        {{ form.round1_feedback|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-6">
+        {{ form.round2_feedback|as_crispy_field }}
+      </div>
+
+    </div>
+
+<div class="form-row">
+      <div class="form-group col-md-6">
+        {{ form.sourced_from|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-6">
+        {{ form.placement_location|as_crispy_field }}
+      </div>
+
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        {{ form.reason_for_shifting|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-6">
+        {{ form.hr_comments|as_crispy_field }}
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <br>
+      <br>
+
+      <a href="{{ MEDIA_URL }}{{ filepath }}" target="_blank">{{ filename }}</a>
+      <br>
+      <input type="submit" name="register" value="Register">
+    </form>
+</div>
+
+</div>
+  {% endblock content %}

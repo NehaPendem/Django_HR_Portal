@@ -1,0 +1,108 @@
+{% extends "custom_auth/base.html" %}
+
+{% block content %}
+
+<br>
+<br>
+<h1 style="color:rgb(27, 103, 224)">Select Desired Attributes</h1>
+<br>
+<nr>
+    <div class="form-group">
+        <label style="color:rgb(27, 20, 224)" for="exp">Required Skills</label>
+        <form class="" action="view_filter" method="POST">
+
+            {% csrf_token %}
+            {% for s in skills %}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="{{s}}" id="s" name="s">
+
+                    <label class="form-check-label">
+                    {{ s }}
+                </label>
+
+                </div>
+            {% endfor %}
+
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+    <label style="color:rgb(27, 20, 224)" for="exp">Mode of Interview</label>
+    <select class="form-control col-md-6" id="mode" name="mode">
+      <option value="1">online</option>
+      <option value="2">offline</option>
+
+    </select>
+
+  </div>
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label style="color:rgb(27, 20, 224)" for="exp">Experience</label>
+                <select class="form-control col-md-6" id="exp" name="exp">
+                <option value="1">< 1 year</option>
+                <option value="2">1-2 years</option>
+                <option value="3">> 2 years</option>
+
+    </select>
+
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label style="color:rgb(27, 20, 224)" for="loc">Placement Location</label>
+                <select class="form-control col-md-6" id="loc" name="loc">
+                <option value="1">Hyderabad</option>
+                <option value="2">Bangalore</option>
+                <option value="3">Chennai</option>
+
+    </select>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

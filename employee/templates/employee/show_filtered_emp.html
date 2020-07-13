@@ -1,0 +1,47 @@
+{% extends "custom_auth/base.html" %}
+
+
+{% block content %}
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        {% for emp in employees %}
+
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><b style="color:rgb(0, 128, 255);">Employee ID: </b>{{ emp.req_id }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ emp.name }}</h6>
+   <h6 class="card-subtitle mb-2 text-muted">{{ emp.mobile_no }}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">{{ emp.email }}</h6>
+    <p class="card-text">
+        <h6 class="card-subtitle mb-2 text-muted">
+            <p style="color:rgb(0, 128, 255);">Specialized In:</p><br>
+            <ul class="list-group">
+            {% for s in emp.skills %}
+            <li class="list-group-item">{{ s }}</li>
+
+            {% endfor %}
+        </ul>
+
+
+
+        </h6></p>
+
+    <a href="{% url 'employee:profile' pk=emp.pk %}" class="card-link"> View Profile</a>
+    <a href="{% url 'employee:edit_employee' pk=emp.pk %}" class="card-link">Edit Profile</a>
+  </div>
+</div>
+<br>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+</div>
+
+
+{% endblock content %}
